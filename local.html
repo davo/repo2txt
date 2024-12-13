@@ -13,18 +13,7 @@
     <meta property="og:url" content="https://repo2txt.simplebasedomain.com/local.html">
     <meta property="og:type" content="website">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/lucide.min.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CYF86LN5WM"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-CYF86LN5WM');
-    </script>
-    <script src="js/jszip.min.js"></script>
+    <link rel="stylesheet" href="/src/style.css">
     <style>
         input[type=file]::file-selector-button {
             font-weight: 500;
@@ -47,7 +36,7 @@
         </a>
         <h1 class="text-3xl font-bold mb-2 text-center text-gray-600">Local Directory to Plain Text</h1>
         <p class="text-lg text-center text-gray-500 mb-6">Convert Local Directory to a Single Formatted Text File</p>
-        
+
         <div class="mb-4">
             <label for="directoryPicker" class="block text-sm font-medium text-gray-600">Select Directory:</label>
             <input type="file" id="directoryPicker" webkitdirectory directory multiple class="mt-1 block w-full">
@@ -84,5 +73,6 @@
         <p>If you encounter any errors, please email <a href="mailto:abinthomasonline@gmail.com" class="text-blue-500 hover:text-blue-700">abinthomasonline@gmail.com</a> or <a href="https://github.com/abinthomasonline/repo2txt/issues" target="_blank" class="text-blue-500 hover:text-blue-700">raise a GitHub issue</a>.</p>
     </footer>
     <script type="module" src="js/local.js"></script>
+    <script type="module" src="/src/js/local.js"></script>
 </body>
 </html>
