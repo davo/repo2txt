@@ -1,7 +1,14 @@
 import JSZip from 'jszip'
 import * as lucide from 'lucide'
 
-import { displayDirectoryStructure, sortContents, getSelectedFiles, formatRepoContents } from './utils.js'
+import {
+	displayDirectoryStructure,
+	sortContents,
+	getSelectedFiles,
+	formatRepoContents,
+} from './utils.js'
+import { createPageHeader } from '../components/PageHeader.js'
+import { patch } from '../core/dom.js'
 
 // Event listener for directory selection
 document.getElementById('directoryPicker').addEventListener('change', handleDirectorySelection)
@@ -140,7 +147,8 @@ document.getElementById('copyButton').addEventListener('click', function () {
 document.getElementById('downloadButton').addEventListener('click', function () {
 	const outputText = document.getElementById('outputText').value
 	if (!outputText.trim()) {
-		document.getElementById('outputText').value = 'Error: No content to download. Please generate the text file first.'
+		document.getElementById('outputText').value =
+			'Error: No content to download. Please generate the text file first.'
 		return
 	}
 	const blob = new Blob([outputText], { type: 'text/plain' })
@@ -150,4 +158,26 @@ document.getElementById('downloadButton').addEventListener('click', function () 
 	a.download = 'prompt.txt'
 	a.click()
 	URL.revokeObjectURL(url)
+})
+
+// When DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+	// Initialize header
+	const headerMount = document.getElementById('header-mount')
+	const header = createPageHeader({
+		title: 'Local Directory to Plain Text',
+		subtitle: 'Convert Local Directory to a Single Formatted Text File',
+	}).setHooks({
+		afterMount: () => {
+			// Re-initialize Lucide icons after mounting
+			createIcons()
+		},
+	})
+
+	// Mount header component
+	header.mount(headerMount)
+
+	// ... existing code ...
+
+	createIcons()
 })

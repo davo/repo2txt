@@ -123,7 +123,7 @@ function displayDirectoryStructure(tree) {
 			} else {
 				icon.setAttribute('data-lucide', 'chevron-down')
 			}
-			lucide.createIcons()
+			createIcons()
 		})
 	}
 
@@ -210,7 +210,9 @@ function displayDirectoryStructure(tree) {
 		const extentionCheckboxesContainerUl = document.createElement('ul')
 		extentionCheckboxesContainer.appendChild(extentionCheckboxesContainerUl)
 		extentionCheckboxesContainerUl.className = 'mt-1'
-		const sortedExtensions = Object.entries(extensionCheckboxes).sort((a, b) => b[1].children.length - a[1].children.length)
+		const sortedExtensions = Object.entries(extensionCheckboxes).sort(
+			(a, b) => b[1].children.length - a[1].children.length
+		)
 		for (const [extension, checkbox] of sortedExtensions) {
 			const extCheckbox = checkbox.checkbox
 			const extCheckboxLi = document.createElement('li')
@@ -253,7 +255,9 @@ function sortContents(a, b) {
 
 // Get selected files from the directory structure
 function getSelectedFiles() {
-	const checkboxes = document.querySelectorAll('#directoryStructure input[type="checkbox"]:checked:not(.directory-checkbox)')
+	const checkboxes = document.querySelectorAll(
+		'#directoryStructure input[type="checkbox"]:checked:not(.directory-checkbox)'
+	)
 	return Array.from(checkboxes).map((checkbox) => JSON.parse(checkbox.value))
 }
 

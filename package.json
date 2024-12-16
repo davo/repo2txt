@@ -1,26 +1,35 @@
 {
-  "name": "better-repo2txt",
+  "name": "repo2txt",
   "private": true,
-  "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "jszip": "^3.10.1",
-    "lucide": "^0.462.0"
+    "dev": "concurrently \"cd frontend && yarn dev\" \"cd server && yarn dev\"",
+    "build": "cd frontend && yarn build",
+    "start": "cd server && yarn start",
+    "clean": "rimraf **/node_modules **/dist",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "setup": "yarn install && cd frontend && yarn install && yarn build && cd ../server && yarn install",
+    "test": "concurrently \"cd frontend && yarn test\" \"cd server && yarn test\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.9",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "vite": "^6.0.2"
+    "concurrently": "^8.2.2",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "tailwindcss": "^3.4.16"
   },
-  "main": "index.js",
-  "repository": "https://github.com/davo/repo2txt.git",
-  "author": "Davo Galavotti <76307+davo@users.noreply.github.com>",
-  "license": "MIT"
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
 }

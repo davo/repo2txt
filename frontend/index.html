@@ -7,25 +7,24 @@
     <meta name="description" content="Convert GitHub repositories to plain text files easily. Our tool helps you transform code into a single formatted text file for better readability and analysis.">
     <meta name="keywords" content="GitHub, code converter, plain text, repository, code analysis">
     <meta name="author" content="abinthomasonline">
-    <link rel="canonical" href="https://repo2txt.simplebasedomain.com/">
+
     <meta property="og:title" content="GitHub to Plain Text Converter">
     <meta property="og:description" content="Convert GitHub repositories to plain text files easily. Transform code into a single formatted text file.">
-    <meta property="og:url" content="https://repo2txt.simplebasedomain.com/">
+
     <meta property="og:type" content="website">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/src/style.css">
 </head>
 <body class="bg-gray-100 min-h-screen p-4 md:p-8 text-gray-600">
     <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 relative">
-        <a href="https://github.com/abinthomasonline/repo2txt" target="_blank" class="absolute top-2 right-2">
-            <i data-lucide="github" class="w-8 h-8 text-gray-600 hover:text-gray-800"></i>
-        </a>
-        <h1 class="text-3xl font-bold mb-2 text-center text-gray-600">GitHub to Plain Text</h1>
-        <p class="text-lg text-center text-gray-500 mb-6">Convert Code in GitHub to a Single Formatted Text File</p>
+        <div id="header-mount" class="header-mount"></div>
         <form id="repoForm" class="space-y-4">
             <div>
                 <label for="repoUrl" class="block text-sm font-medium text-gray-600">GitHub URL:</label>
-                <input type="text" id="repoUrl" name="repoUrl" required class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 px-2">
+                <input type="text" id="repoUrl" name="repoUrl" required
+                       class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 px-2"
+                       placeholder="e.g., https://github.com/owner/repo or https://github.com/owner/repo.wiki">
+                <p class="mt-1 text-sm text-gray-500">Supports both regular repositories and wiki repositories (.wiki)</p>
             </div>
             <div>
                 <label for="accessToken" class="block text-sm font-medium text-gray-600 flex items-center">
@@ -50,6 +49,14 @@
                 Fetch Directory Structure
             </button>
         </form>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Hide Extensions</label>
+          <div class="mt-1 flex gap-2 flex-wrap">
+            <input type="text" id="hideExtensions"
+                   class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                   placeholder="e.g. jpg,png,pdf (comma separated)">
+          </div>
+        </div>
         <div id="extentionCheckboxes"></div>
         <div id="directoryStructure" class="mt-6"></div>
         <div class="mt-4 flex space-x-4">
@@ -74,9 +81,7 @@
             </button>
         </div>
     </div>
-    <footer class="mt-8 text-center text-sm text-gray-500">
-        <p>If you encounter any errors, please email <a href="mailto:abinthomasonline@gmail.com" class="text-blue-500 hover:text-blue-700">abinthomasonline@gmail.com</a> or <a href="https://github.com/abinthomasonline/repo2txt/issues" target="_blank" class="text-blue-500 hover:text-blue-700">raise a GitHub issue</a>.</p>
-    </footer>
+
     <script type="module" src="/src/js/index.js"></script>
 </body>
 </html>
